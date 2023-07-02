@@ -15,6 +15,15 @@ class SupportController extends Controller
         return view('admin/supports/index', compact('supports'));
     }
 
+    public function show(String|int $id, Support $support)//metodo show
+    { 
+       if /* usa o if para verificar se o id existe ou não. Caso não exista ele retorna para a view anterior */
+       (!$support = $support->find($id) /* recupera o support pelo id */) {
+        return back();
+       }
+       return view('admin/supports/show', compact('support'));
+    }
+
     public function create() 
     {
         return view('admin/supports/create');
