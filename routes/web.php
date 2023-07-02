@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\{SupportController};
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
 
+
+Route::delete('/supports/{id}', [SupportController::class, 'destroy'])->name('supports.destroy');
+
 //Atualiza os regitros editados
 Route::put('/supports/{id}/update', [SupportController::class, 'update'])->name('supports.update');
 
