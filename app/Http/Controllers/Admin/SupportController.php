@@ -32,7 +32,7 @@ class SupportController extends Controller
 
     public function store(StoreUpdateSupport $request, Support $support) // injeção de dependência
     {
-        $data = $request->all();//inserindo regitros no banco
+        $data = $request->validate();//inserindo regitros no banco
         $data['status'] = 'a';
         $support->create($data);
        
@@ -47,7 +47,7 @@ class SupportController extends Controller
        return view('admin/supports.edit', compact('support'));
     }
 
-    public function update(Request $request, Support $support, string $id) //metodo que edita o registro
+    public function update(StoreUpdateSupport $request, Support $support, string $id) //metodo que edita o registro
     {
         if(!$support = $support->find($id)) {
             return back();
@@ -58,10 +58,7 @@ class SupportController extends Controller
         //    $support->body = $request->body;
         //    $support->save();
 
-           $support->update($request->only([
-            'subject',
-            'body',
-           ]));
+           $support->update($request->validated()); //o validated pega agora só os metodos que foram validados
            return redirect()->route('supports.index');
     }
 
