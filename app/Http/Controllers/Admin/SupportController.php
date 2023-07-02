@@ -20,8 +20,12 @@ class SupportController extends Controller
         return view('admin/supports/create');
     }
 
-   /*  public function store(Request $request) // injeção de dependência
+    public function store(Request $request, Support $support) // injeção de dependência
     {
+        $data = $request->all();//inserindo regitros no banco
+        $data['status'] = 'a';
+        $support->create($data);
        
-    } */
+       return redirect()->route('supports.index');//redireciona a rota para a index quando for submetido
+    }
 }
