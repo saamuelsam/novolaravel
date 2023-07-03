@@ -11,9 +11,9 @@ class SupportController extends Controller
 {
     public function index(Support $support)
     {
-        $supports = $support->all();
+        $supports = $support->all(); //aqui recupera todos os dados do banco.view os dados (subject, body, status)
 
-        return view('admin/supports/index', compact('supports'));
+        return view('admin/supports/index', compact('supports')); //compact mostra os dados na view
     }
 
     public function show(String|int $id, Support $support) //metodo show
@@ -29,11 +29,11 @@ class SupportController extends Controller
         return view('admin/supports/create');
     }
 
-    public function store(StoreUpdateSupport $request, Support $support) // injeção de dependência
+    public function store(StoreUpdateSupport $request, Support $support) // injeção de dependência //o request tras todos os dados que vem da requis
     {
         $data = $request->validate(); //inserindo regitros no banco
         $data['status'] = 'a';
-        $support->create($data);
+        $support->create($data);//jogo o $data em create, para cadastrar todos os dados
 
         return redirect()->route('supports.index'); //redireciona a rota para a index quando for submetido
     }
@@ -48,6 +48,7 @@ class SupportController extends Controller
 
     public function update(StoreUpdateSupport $request, Support $support, string $id) //metodo que edita o registro
     {
+        dd($request->all());
         if (!$support = $support->find($id)) {
             return back();
         }
