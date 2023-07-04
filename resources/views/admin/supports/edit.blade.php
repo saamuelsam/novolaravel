@@ -8,8 +8,8 @@
 
 <form action="{{ route('supports.update', $support->id) }}" method="POST">
   <!-- <input type="text" value="{{csrf_token() }}" name="_token"> -->
-  @method('put')
-  @csrf
+  @method('PUT')
+  @csrf()
   <input type="text" placeholder="Assunto" name="subject" value="{{$support->subject}}">
   <textarea name="body" cols="30" rows="5" style="resize: none;">{{ $support->body}}</textarea>
   <button type="submit">Enviar</button>

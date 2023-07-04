@@ -31,7 +31,7 @@ class SupportController extends Controller
 
     public function store(StoreUpdateSupport $request, Support $support) // injeção de dependência //o request tras todos os dados que vem da requis
     {
-        $data = $request->validate(); //inserindo regitros no banco
+        $data = $request->validated(); //inserindo regitros no banco
         $data['status'] = 'a';
         $support->create($data);//jogo o $data em create, para cadastrar todos os dados
 
@@ -48,7 +48,7 @@ class SupportController extends Controller
 
     public function update(StoreUpdateSupport $request, Support $support, string $id) //metodo que edita o registro
     {
-        dd($request->all());
+        
         if (!$support = $support->find($id)) {
             return back();
         }
