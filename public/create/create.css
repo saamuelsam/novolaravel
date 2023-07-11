@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    background: #0d6efd;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 5px;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.form-top {
+    padding-top: 20px;
+}
+
+.textb2 {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    flex-wrap: wrap;
+    margin: auto;
+    gap: 15px;
+}
+
+.inputb2 {
+    text-align: center;
+}

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
-use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
@@ -49,10 +48,11 @@ class SupportController extends Controller
     public function update(StoreUpdateSupport $request, Support $support, string $id) //metodo que edita o registro
     {
         
+        
         if (!$support = $support->find($id)) {
             return back();
         }
-
+        
         //    $support->subject = $request->subject;
         //    $support->body = $request->body;
         //    $support->save();
@@ -67,7 +67,6 @@ class SupportController extends Controller
             return back();
         }
         $support->delete();
-
-        return redirect()->route('supports.index');
+            return redirect()->route('supports.index');
     }
 }
