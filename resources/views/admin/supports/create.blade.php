@@ -4,22 +4,10 @@
 <h1>Nova Dúvida</h1>
 <link href= "{{ asset('create/create.css') }}"  rel="stylesheet"/>
 
-@if($errors->any()) <!-- o any verifica se tem algum erro -->
-  @foreach($errors->all() as $error)
-  <div class="alert alert-danger alert-dismissible" role="alert">
-  {{$error}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-  @endforeach
-@endif
+<x-alert/>
 
 <form class="form-top" action="{{ route('supports.store') }}" method="POST">
   <!-- <input type="text" value="{{csrf_token() }}" name="_token"> -->
-  @csrf()
-  <div class="textb2">
-    <input class="inputb2" type="text" placeholder="Assunto" name="subject" value="{{ old('subject') }}"> <!-- o old diz se tem um valor ele vai persistir esse valor -->
-    
-    <textarea  name="body" cols="30" rows="5" style="resize: none;">{{ old('body')}}</textarea>
-    <button class="btn btn-primary" type="submit">Enviar</button>
-  </div>
+  
+  @include('admin.supports.partials.form')
 </form>   

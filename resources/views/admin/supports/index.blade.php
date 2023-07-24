@@ -21,12 +21,12 @@
   <tbody>
     @foreach($supports as $support)
       <tr>
-        <td class="text-danger">{{ $support->subject }}</td>
-        <td class="text-warning">{{ $support->status }}</td>
-        <td>{{ $support->body }}</td>
+        <td class="text-danger">{{ $support['subject'] }}</td>
+        <td class="text-warning">{{ $support['status'] }}</td>
+        <td>{{ $support['body'] }}</td>
         <td>
-          <a class="text-decoration-none" href="{{route('supports.show', $support->id)}}">Ir</a>
-          <a class="text-decoration-none"   href="{{ route('supports.edit', $support->id)}}">Editar</a>
+          <a class="text-decoration-none" href="{{route('supports.show', $support['id'])}}">Ir</a>
+          <a class="text-decoration-none"   href="{{ route('supports.edit', $support['id'])}}">Editar</a>
         </td>
       </tr>
     @endforeach
