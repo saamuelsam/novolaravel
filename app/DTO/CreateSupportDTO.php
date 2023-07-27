@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-use StoreUpadateSupport;
+use App\Http\Requests\StoreUpdateSupport;
 
 class CreateSupportDTO 
 {
@@ -15,7 +15,7 @@ class CreateSupportDTO
 
     }
 
-    public static function MakeFromRequest(StoreUpadateSupport $request): self 
+    public static function MakeFromRequest(StoreUpdateSupport $request): self
     {
         return new self(
             $request->subject,

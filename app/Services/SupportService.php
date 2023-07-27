@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use stdClass;
-use App\DTO\{CreateSupportDTO, UpadateSupportDTO};
+use App\DTO\{CreateSupportDTO, UpdateSupportDTO};
 use App\Repositories\SupportRepositoryInterface;
 
 class SupportService
@@ -31,7 +31,7 @@ class SupportService
         return $this->repository->new($dto);
     }
 
-    public function update(UpadateSupportDTO $dto): stdClass|null
+    public function update(UpdateSupportDTO $dto): stdClass|null
     {
         return $this->repository->update($dto);
     }

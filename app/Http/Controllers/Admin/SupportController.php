@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DTO\CreateSupportDTO;
+use App\DTO\UpdateSupportDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 
@@ -45,6 +46,7 @@ class SupportController extends Controller
 
     public function store(StoreUpdateSupport $request) // injeção de dependência //o request tras todos os dados que vem da requis
     {
+        
         $this->service->new(
             CreateSupportDTO::MakeFromRequest($request)
         
@@ -68,11 +70,12 @@ class SupportController extends Controller
         return view('admin/supports.edit', compact('support'));
     }
  */
-    public function update(StoreUpdateSupport $request, Support $support, string $id) //metodo que edita o registro
+    public function update(StoreUpdateSupport $request, Support $support) //metodo que edita o registro
     {
         
+        
         $support = $this->service->update(
-            StoreUpdateSupport::MakeFromRequest($request),
+            UpdateSupportDTO::MakeFromRequest($request),
         );
         if (!$support) {
             return back();
@@ -85,7 +88,7 @@ class SupportController extends Controller
         return redirect()->route('supports.index');
     }
 
-    public function destroy( String $id) //metodo para deletar registros
+    public function destroy(String $id) //metodo para deletar registros
     {
          $this->service->delete($id);
     

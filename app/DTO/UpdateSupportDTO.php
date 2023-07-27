@@ -2,9 +2,9 @@
 
 namespace App\DTO;
 
-use App\Http\Requests\StoreUpadateSupport;
+use App\Http\Requests\StoreUpdateSupport;
 
-class UpadateSupportDTO 
+class UpdateSupportDTO 
 {
     public function __construct(
         public string $id,
@@ -16,7 +16,7 @@ class UpadateSupportDTO
 
     }
 
-    public static function MakeFromRequest(StoreUpadateSupport $request): self 
+    public static function MakeFromRequest(StoreUpdateSupport $request): self 
     {
         return new self(
             $request->id,
